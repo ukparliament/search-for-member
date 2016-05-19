@@ -5,8 +5,6 @@
 [![Code Climate](https://codeclimate.com/github/giusepped/search-for-member/badges/gpa.svg)](https://codeclimate.com/github/giusepped/search-for-member)
 [![Dependency Status](https://gemnasium.com/giusepped/search-for-member.svg)](https://gemnasium.com/giusepped/search-for-member)
 
-# Project Name
-
 This is a very basic Rails app that lets you search for members of both houses of Parliament using a keyword that represents one of their interests (e.g. "Housing", "Yorkshire", "Africa" etc). Once you get a list of members back, you can click on each one of them to get a bio page of that particular member
 
 ## Usage
