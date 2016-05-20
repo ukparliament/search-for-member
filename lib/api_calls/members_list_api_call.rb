@@ -12,8 +12,7 @@ class MembersListApiCall
 	private
 
 	def url_builder(search_term)
-		api_key = ENV['APIKEY']
-		url = "http://localhost:4567/?key=#{api_key}&search_term=#{search_term}/"
+		url = "#{BASE_URL}?key=#{API_KEY}&search_term=#{search_term}/"
 		URI.parse(url)
 	end
 

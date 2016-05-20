@@ -14,9 +14,7 @@ feature 'members' do
 
 	context 'after the user searches for "edinburgh" (multiple results)' do
 		before(:each) do
-    		stub_request(:get, "http://data.parliament.uk/membersdataplatform/services/mnis/members/query/biographyinterest=edinburgh/").
-    		with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'data.parliament.uk', 'User-Agent'=>'Ruby'}).
-    		to_return(:status => 200, :body => MEMBERS_LIST_XML, :headers => {})
+    		request_stub('edinburgh', MEMBERS_LIST_XML)
   		end
 
 		before(:each) do
@@ -44,9 +42,7 @@ feature 'members' do
 
 	context 'after the user searches for "aberdeen" (no results)' do 
 		before(:each) do
-    		stub_request(:get, "http://data.parliament.uk/membersdataplatform/services/mnis/members/query/biographyinterest=aberdeen/").
-    		with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'data.parliament.uk', 'User-Agent'=>'Ruby'}).
-    		to_return(:status => 200, :body => EMPTY_MEMBERS_LIST, :headers => {})
+    		request_stub('aberdeen', EMPTY_MEMBERS_LIST)
   		end
 		before(:each) do
 	        visit members_path
@@ -61,9 +57,7 @@ feature 'members' do
 
 	context 'after the user searches for "bradford" (one result)' do
 		before(:each) do
-    		stub_request(:get, "http://data.parliament.uk/membersdataplatform/services/mnis/members/query/biographyinterest=bradford/").
-    		with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'data.parliament.uk', 'User-Agent'=>'Ruby'}).
-    		to_return(:status => 200, :body => SINGLE_MEMBER_XML, :headers => {})
+    		request_stub('bradford', SINGLE_MEMBER_XML)
   		end
 		before(:each) do
 	        visit members_path
@@ -81,9 +75,7 @@ feature 'members' do
 
 	context 'clicking on a member' do
 		before(:each) do
-    		stub_request(:get, "http://data.parliament.uk/membersdataplatform/services/mnis/members/query/biographyinterest=edinburgh/").
-    		with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'data.parliament.uk', 'User-Agent'=>'Ruby'}).
-    		to_return(:status => 200, :body => MEMBERS_LIST_XML, :headers => {})
+    		request_stub('edinburgh', MEMBERS_LIST_XML)
   		end
 
 		before(:each) do
@@ -108,6 +100,15 @@ feature 'members' do
 			visit ("#{current_path}.json")
 			expect(page).to have_content(JSON_MEMBER_VIEW)
 		end
+	end
+
+	private 
+
+	def request_stub(search_term, const_response)
+		stub_request(:get, "#{BASE_URL}?key=#{API_KEY}&search_term=#{search_term}/").
+    	with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'localhost:4567', 'User-Agent'=>'Ruby'}).
+    	to_return(:status => 200, :body => const_response, :headers => {})
+    	$redis.flushall
 	end
 
 end
