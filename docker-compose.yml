@@ -1,0 +1,20 @@
+redis:
+  image: redis:3.0.7
+web:
+  build: .
+  environment:
+    - REDIS_URL=redis://redis
+  volumes:
+    - .:/app
+  ports:
+    - "3000"
+  links: 
+    - redis  
+lb:
+  image: dockercloud/haproxy
+  links:
+    - web
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  ports:
+    - 80:80
