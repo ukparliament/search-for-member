@@ -1,5 +1,8 @@
-GO_STAGE_COUNTER?="unknown"
-IMAGE_NAME=ukpds/search-for-member:$(GO_STAGE_COUNTER)
+# GO_PIPELINE_COUNTER is the pipeline number, passed from GoCD.
+# If we're running this from the command line, use a default value.
+GO_PIPELINE_COUNTER?="unknown"
+
+IMAGE_NAME=ukpds/search-for-member:$(GO_PIPELINE_COUNTER)
 
 build :
 	docker-compose build
