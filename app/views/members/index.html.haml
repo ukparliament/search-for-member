@@ -1,7 +1,7 @@
 %header
 	= image_tag "portcullis.png", :class => "logo"
 	%form{:method => "post", :action => "members/fetch"}
-		%input.search-box{:name => "search_term", :placeholder => "search for a place or an interest"}
+		%input.search-box{:name => "search_term", :placeholder => "search for a sensible MP"}
 		%input{:name => "authenticity_token", :type => "hidden", :value => form_authenticity_token }
 			%button{:type => "submit"} Find
 
