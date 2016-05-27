@@ -1,3 +1,7 @@
 * text=auto eol=lf
+<<<<<<< HEAD
 
 *.png -text
+=======
+*.png binary
+>>>>>>> a9c0014b75ab82db29608db4094aebf1bbcb20b5
