@@ -1,7 +1,7 @@
 redis:
   image: redis:3.0.7
 web:
-  build: .
+  image: ${IMAGE_NAME}
   environment:
     - REDIS_URL=redis://redis
   volumes:
