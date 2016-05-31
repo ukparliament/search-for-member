@@ -4,6 +4,9 @@ GO_PIPELINE_COUNTER?="unknown"
 # DOCKER_SWARM_URL is passed from our build agent.
 DOCKER_SWARM_URL?="unknown"
 
+export IMAGE_VERSION=0.1.$(GO_PIPELINE_COUNTER)
+export IMAGE_NAME=ukpds/search-for-member:$(IMAGE_VERSION)
+
 build :
 	docker-compose build
 
@@ -12,8 +15,6 @@ test :
 	docker-compose down
 
 push:
-	export IMAGE_VERSION=0.1.$(GO_PIPELINE_COUNTER)
-	export IMAGE_NAME=ukpds/search-for-member:$(IMAGE_VERSION)
 	docker build -t $(IMAGE_NAME) .
 	docker push $(IMAGE_NAME)
 	docker rmi $(IMAGE_NAME)
