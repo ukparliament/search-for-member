@@ -14,6 +14,7 @@ test :
 	docker-compose down
 
 deploy-systest:
+	docker pull redis:3.0.7
 	docker-compose -f docker-compose.systest.yml pull
 	docker-compose -f docker-compose.systest.yml up -d
 
