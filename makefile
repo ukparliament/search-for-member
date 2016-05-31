@@ -23,3 +23,6 @@ push:
 deploy-systest:
 	export DOCKER_HOST=$(DOCKER_SWARM_URL)
 	docker-compose -f docker-compose.systest.yml up -d
+	
+test-target:
+    export DOCKER_HOST=tcp://swarm1.ukpds.org:4000 && echo $$DOCKER_HOST
