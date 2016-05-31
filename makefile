@@ -13,7 +13,7 @@ test :
 	docker-compose run web rake spec
 
 deploy-systest:
-	docker-compose up -f docker-compose.systest.yml -d
+	docker-compose -f docker-compose.systest.yml up -d
 
 push:
 	docker build -t $(IMAGE_NAME) .
