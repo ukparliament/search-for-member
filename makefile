@@ -23,3 +23,6 @@ push:
 deploy-systest:
 	export DOCKER_HOST=$(DOCKER_SWARM_URL)
 	docker-compose -f docker-compose.systest.yml up -d
+
+test-target:
+	export DOCKER_HOST=$(DOCKER_SWARM_URL) && echo $$DOCKER_HOST
