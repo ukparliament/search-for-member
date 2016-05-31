@@ -21,8 +21,4 @@ push:
 	docker rmi $(IMAGE_NAME)
 
 deploy-systest:
-	export DOCKER_HOST=$(DOCKER_SWARM_URL)
-	docker-compose -f docker-compose.systest.yml up -d
-
-test-target:
-	export DOCKER_HOST=$(DOCKER_SWARM_URL) && echo $$DOCKER_HOST
+	export DOCKER_HOST=$(DOCKER_SWARM_URL) && echo $$DOCKER_HOST && docker-compose -f docker-compose.systest.yml up -d
