@@ -3,6 +3,7 @@ GO_PIPELINE_COUNTER?="unknown"
 
 # DOCKER_SWARM_URL is passed from our build agent.
 DOCKER_SWARM_URL?="unknown"
+export DOCKER_HOST=$(DOCKER_SWARM_URL) 
 
 export IMAGE_VERSION=0.1.$(GO_PIPELINE_COUNTER)
 export IMAGE_NAME=ukpds/search-for-member:$(IMAGE_VERSION)
@@ -20,5 +21,4 @@ push:
 	docker rmi $(IMAGE_NAME)
 
 deploy-systest:
-	export DOCKER_HOST=$(DOCKER_SWARM_URL) 
 	docker-compose -f docker-compose.systest.yml up -d
