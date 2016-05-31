@@ -11,6 +11,7 @@ build :
 
 test :
 	docker-compose run web rake spec
+	docker-compose down
 
 deploy-systest:
 	docker-compose -f docker-compose.systest.yml up -d
