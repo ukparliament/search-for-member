@@ -15,8 +15,8 @@ test :
 
 deploy-systest:
 	docker pull redis:3.0.7
-	docker-compose -f docker-compose.systest.yml pull
-	docker-compose -f docker-compose.systest.yml up -d
+	# docker-compose -f docker-compose.systest.yml pull
+	# docker-compose -f docker-compose.systest.yml up -d
 
 push:
 	docker build -t $(IMAGE_NAME) .
