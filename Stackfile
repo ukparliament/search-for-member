@@ -1,0 +1,16 @@
+lb:
+  image: 'dockercloud/haproxy:latest'
+  links:
+    - web
+  ports:
+    - '80:80'
+  volumes:
+    - '/var/run/docker.sock:/var/run/docker.sock'
+redis:
+  image: 'redis:3.0.7'
+web:
+  image: 'ukparliament/search-for-member:latest'
+  environment:
+    - 'REDIS_URL=redis://redis'
+  links:
+    - redis
