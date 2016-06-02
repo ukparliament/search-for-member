@@ -20,4 +20,7 @@ push:
 	docker rmi $(NAME):$(VERSION)
 
 deploy-systest:
-	export DOCKER_HOST=$(DOCKER_SWARM_URL) && export IMAGE_NAME=$(NAME):$(VERSION) && docker-compose -f docker-compose.systest.yml up -d --force-recreate
+	export DOCKER_HOST=$(DOCKER_SWARM_URL) && \
+	export IMAGE_NAME=$(NAME):$(VERSION) && \
+	docker-compose -f docker-compose.systest.yml down -d \
+	docker-compose -f docker-compose.systest.yml up -d
