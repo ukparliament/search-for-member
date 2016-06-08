@@ -10,11 +10,6 @@ web:
     - "3000"
   links:
     - redis
-lb:
-  image: dockercloud/haproxy
-  links:
-    - web
-  volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
-  ports:
-    - 80:80
+  labels:
+   - "traefik.backend=search-for-member"
+   - "traefik.frontend.rule=Host:sfm.ukpds.org"
