@@ -5,9 +5,9 @@
 [![Code Climate](https://codeclimate.com/github/giusepped/search-for-member/badges/gpa.svg)](https://codeclimate.com/github/giusepped/search-for-member)
 [![Dependency Status](https://gemnasium.com/giusepped/search-for-member.svg)](https://gemnasium.com/giusepped/search-for-member)
 
-This is a Rails app that allows you to search for members of both houses of Parliament using a keyword that represents one of their interests (e.g. "Housing", "Yorkshire", "Africa" etc). Once you get a list of members back, you can click on each one of them to get a bio page for that particular member.  It was created as part of the exploration for the new [parliament](www.parliament.uk) website.   
+This is a Rails app that allows you to search for members of both houses of Parliament using a keyword that represents one of their interests (e.g. "Housing", "Yorkshire", "Africa" etc). Once you get a list of members back, you can click on each one of them to get a bio page for that particular member.  It was created as part of the exploration for the new [parliament](http://parliament.uk) website.   
 
-The current [parliament](www.parliament.uk) application can be found [here](https://github.com/ukparliament/parliament.uk-prototype).
+The current [parliament](http://parliament.uk) application can be found [here](https://github.com/ukparliament/parliament.uk-prototype).
 
 ## Usage
 
